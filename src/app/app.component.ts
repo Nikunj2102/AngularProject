@@ -1,13 +1,19 @@
-import { Component , OnInit } from '@angular/core';
+import { Component , OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AgGridNg2 } from 'ag-grid-angular';
+import { Dialog } from 'ag-grid-community';
+import { FormComponent } from './form/form.component'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = "MyApp";
+
+  //manage instance of AgGrid
+  @ViewChild('agGrid') agGrid : AgGridNg2;
 
   //Define columns as an array
 
@@ -27,6 +33,25 @@ export class AppComponent {
   {
     this.rowData = this.http.get('https://api.myjson.com/bins/wvepl');
   }
+
+  getSelectedRows() {
+    const selectedNodes = this.agGrid.api.getSelectedNodes();
+    const selectedData = selectedNodes.map( node => node.data );
+    const selectedDataStringPresentation = selectedData.map( node => node.name + ' ' + node.mobileno).join(', ');
+    alert(`Selected nodes: ${selectedDataStringPresentation}`);
+  }
+
+  // fillForm(e)
+  // {
+  //   let dialogRef = dialog.open(FormComponent , 
+  //     {
+  //       height : '400px',
+  //       width: '400px'
+  //     })
+  // }
+
+}
+
   //This is initial hardCoded data
   //  rowData = [
   //   {"id":1,"name":"Nikunj","address":"Sainik Vihar","mobileno":989898},
@@ -43,5 +68,3 @@ export class AppComponent {
   //   {"id":12,"name":"Name12","address":"Address12","mobileno":679898}
   //  ]; //   https://api.myjson.com/bins/wvepl <- link to JSON data
   
-
-}

@@ -1,9 +1,17 @@
-<ag-grid-angular style="width:802px; height: 500px;"
-                 class = "ag-theme-balham"
-                 [rowData] = "rowData | async"
-                 [columnDefs] = "columnDefs"
->
+<div style="max-width: 802px;">
+    <ag-grid-angular #agGrid
+                    style="width:802px; /* height: 500px; */"
+                    class = "ag-theme-balham"
+                    [rowData] = "rowData | async"
+                    [columnDefs] = "columnDefs"
+                    rowSelection="multiple"
+                    domLayout='autoHeight'
+    >
 
-</ag-grid-angular>
+    </ag-grid-angular>
 
+    <!--Add a button to send data to get selected rows-->
+    <button style="float: right" class="btn btn-primary" (click) = "getSelectedRows()">Get Rows</button>
+    <button style="float : left" class="btn btn-primary" (click) = "fillForm($event)">Register</button>
+</div>
 <!-- <router-outlet></router-outlet> -->

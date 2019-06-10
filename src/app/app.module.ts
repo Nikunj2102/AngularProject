@@ -9,9 +9,13 @@ import { AgGridModule } from 'ag-grid-angular';
 //import HttpClientModule to fetch data from a remote server
 import { HttpClientModule } from '@angular/common/http';
 
+import 'ag-grid-enterprise';
+import { FormComponent } from './form/form.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
