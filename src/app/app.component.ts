@@ -1,6 +1,6 @@
 import { Component , OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AgGridNg2 } from 'ag-grid-angular';
+//import { } from 'ag-grid-angular';
 import { Dialog } from 'ag-grid-community';
 import { FormComponent } from './form/form.component'
 import { MatDialog , MatDialogConfig } from '@angular/material';
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
   title = "MyApp";
 
   //manage instance of AgGrid
-  @ViewChild('agGrid', {read:false, static: false}) agGrid : AgGridNg2;
+  @ViewChild('agGrid', {read:false, static: false}) agGrid;
 
   //Define columns as an array
 
