@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { AgGridNg2 } from 'ag-grid-angular';
 import { Dialog } from 'ag-grid-community';
 import { FormComponent } from './form/form.component'
+import { MatDialog , MatDialogConfig } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -26,12 +28,26 @@ export class AppComponent implements OnInit{
 
   rowData : any;
 
-  //make a constructor and declare a local instance
- constructor(private http: HttpClient) { }
+  //declare a constructor and define a local instance
+ constructor(private http: HttpClient , private dialog: MatDialog) { }
 
   ngOnInit() 
   {
     this.rowData = this.http.get('https://api.myjson.com/bins/wvepl');
+  }
+
+  openDialog()
+  {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      id: 1,
+      title: "Please fill the form!"
+    }
+    this.dialog.open(FormComponent , dialogConfig);
+    const dialogRef = this.dialog.open(FormComponent , dialogConfig);
+    dialogRef.afterClosed().subscribe(data => console.log("Data: " , data));
   }
 
   getSelectedRows() {
@@ -40,15 +56,6 @@ export class AppComponent implements OnInit{
     const selectedDataStringPresentation = selectedData.map( node => node.name + ' ' + node.mobileno).join(', ');
     alert(`Selected nodes: ${selectedDataStringPresentation}`);
   }
-
-  // fillForm(e)
-  // {
-  //   let dialogRef = dialog.open(FormComponent , 
-  //     {
-  //       height : '400px',
-  //       width: '400px'
-  //     })
-  // }
 
 }
 
