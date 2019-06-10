@@ -8,12 +8,32 @@ import { AppComponent } from './app.component';
 import { AgGridModule } from 'ag-grid-angular';
 //import HttpClientModule to fetch data from a remote server
 import { HttpClientModule } from '@angular/common/http';
-
 import 'ag-grid-enterprise';
 import { FormComponent } from './form/form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import angular material for dialogue forms
 import { MatDialogModule } from '@angular/material';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button'
+import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+import {MatTabsModule} from '@angular/material/tabs';
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatInputModule } from "@angular/material/input";
+import { MatListModule } from "@angular/material/list";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatSelectModule } from "@angular/material/select";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatSortModule } from "@angular/material/sort";
+import { MatTableModule } from "@angular/material/table";
+import { MatToolbarModule } from "@angular/material/toolbar";
+
+
+
+
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+
 
 @NgModule({
   declarations: [
@@ -24,9 +44,27 @@ import { MatDialogModule } from '@angular/material';
     BrowserModule,
     AppRoutingModule,
     AgGridModule.withComponents([]),
-    HttpClientModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    HttpClientModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatTabsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    AppRoutingModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

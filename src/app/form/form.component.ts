@@ -10,19 +10,22 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class FormComponent implements OnInit {
   
   form: FormGroup;
-  descripton: string;
+  description: string;
 
-  constructor(private fb: FormBuilder , private dialogRef: MatDialogRef<FormComponent>,
-    @Inject(MAT_DIALOG_DATA) data) { 
-      this.descripton = data.descripton;
-     }
+  constructor(
+    private fb: FormBuilder,
+    private dialogRef: MatDialogRef<FormComponent>,
+    @Inject(MAT_DIALOG_DATA) data) {
 
-  ngOnInit() {
-    this.form = this.fb.group({
-      description: [this.descripton, []]
-    });
-  }
-  
+    this.description = data.description;
+}
+
+ngOnInit() {
+  this.form = this.fb.group({
+      description: [this.description, []]
+    
+  });
+}
   save()
   {
     this.dialogRef.close(this.form.value);

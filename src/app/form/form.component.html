@@ -1,28 +1,29 @@
 <h2 mat-dilaog-title>
-  {{description}}
+  Test
 </h2>
 
-<mat-dialog-content [formGroup] = "form">
+<mat-dialog-content [formGroup]="form">
+  <div>afmods</div>
 
   <mat-form-field>
-    <input matInput placeholder="Name?" formControlNamw="description" >
+    <input matInput placeholder="Name?" formControlName="description" >
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Address" formControlNamw="description" >
+    <input matInput placeholder="Address" formControlName="description" >
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Phone Number?" formControlNamw="description" >
-  </mat-form-field>
+  <mat-form-field> 
+    <input matInput placeholder="Phone Number?" formControlName="description" >
+  </mat-form-field> 
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button class="mat-raised-button" click="close()">
+  <button class="mat-raised-button" (click)="close()">
     Close
   </button>
 
-  <button class="mat-raised-button mat-primary" click="save()">
+  <button class="mat-raised-button mat-primary" (click)="save()">
     Save
-  </button>
+  </button> 
 </mat-dialog-actions>
