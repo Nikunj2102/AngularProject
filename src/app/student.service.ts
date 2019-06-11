@@ -17,13 +17,14 @@ export class StudentService {
   getStudents() : Observable<student[]>
   {
     return this.http.get<student[]>(this.url); 
-    //of(STUDENT_DATA);
+
   }
 
   addStudent(newStudent: student)
   {
     this.http.post<student>(this.url , newStudent , httpOptions);
-    // console.log(JSON.stringify(/api/STUDENT_DATA));
+
+    debugger;
   }
   
   constructor(private http: HttpClient) { }
