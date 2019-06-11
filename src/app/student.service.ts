@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { student } from './student';
+import { Observable , of} from 'rxjs';
 import { STUDENT_DATA } from './dummyData';
 
 @Injectable({
@@ -7,9 +8,9 @@ import { STUDENT_DATA } from './dummyData';
 })
 export class StudentService {
 
-  getStudents() : student[]
+  getStudents() : Observable<student[]>
   {
-    return STUDENT_DATA;
+    return of(STUDENT_DATA);
   }
   
   constructor() { }

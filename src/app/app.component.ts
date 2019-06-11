@@ -44,7 +44,7 @@ export class AppComponent implements OnInit{
    //FUNCTIONS 
    assignValue()
     {
-      this.rowData = this.studentService.getStudents();
+      this.studentService.getStudents().subscribe(students => this.rowData = students);
   }
 
   
