@@ -4,7 +4,6 @@ import { Dialog } from 'ag-grid-community';
 import { FormComponent } from './form/form.component'
 import { MatDialog , MatDialogConfig } from '@angular/material';
 import { FormsModule } from '@angular/forms';
-//import { STUDENT_DATA } from './dummyData';
 import { student } from './student';
 import { StudentService } from './student.service';
 

@@ -1,6 +1,9 @@
 import { Component, OnInit , Inject } from '@angular/core';
 import { MAT_DIALOG_DATA , MatDialogRef } from '@angular/material';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { student } from '../student';
+import { StudentService } from '../student.service';
+import { InMemoryDataService } from '../in-memory-data.service';
 
 
 @Component({
@@ -19,6 +22,7 @@ export class FormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private studentService: StudentService,
     private dialogRef: MatDialogRef<FormComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
 
@@ -40,7 +44,7 @@ ngOnInit() {
   save()
   {
     this.dialogRef.close(this.form.value);   
-    //this.addData();
+    this.addData(this.form.value);
   }
 
   close()
@@ -48,15 +52,12 @@ ngOnInit() {
     this.dialogRef.close();
   }
 
-  // addData()
-  // {
-  //   STUDENT_DATA.push({
-      
-  //       id:this.form.value.id,
-  //       name:this.form.value.name,
-  //       address:this.form.value.address,
-  //       mobileno:this.form.value.mobileno
-        
-  //   });
-  //}
+  addData(newStudent: student): void
+  {
+    if(!newStudent)
+    {
+      return;
+    }
+    this.studentService.addStudent(newStudent);
+  }
 }
