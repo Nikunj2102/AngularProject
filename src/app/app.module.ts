@@ -28,12 +28,9 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
 import { MatToolbarModule } from "@angular/material/toolbar";
-
-
-
-
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 @NgModule({
   declarations: [
@@ -63,7 +60,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     AppRoutingModule,
     MatSelectModule,
     MatDatepickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
 
   ],
   providers: [],

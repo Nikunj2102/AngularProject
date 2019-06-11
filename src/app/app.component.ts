@@ -6,6 +6,7 @@ import { MatDialog , MatDialogConfig } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { STUDENT_DATA } from './dummyData';
 import { student } from './student';
+import { StudentService } from './student.service';
 
 
 
@@ -37,13 +38,13 @@ export class AppComponent implements OnInit{
   
 
   //DEFINING LOCAL INSTANCES
-  constructor(private http: HttpClient , private dialog: MatDialog) { }
+  constructor(private http: HttpClient , private dialog: MatDialog , private studentService: StudentService) { }
 
 
    //FUNCTIONS 
    assignValue()
     {
-      this.rowData = STUDENT_DATA;
+      this.rowData = this.studentService.getStudents();
   }
 
   
