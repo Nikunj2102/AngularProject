@@ -2,10 +2,11 @@
     <ag-grid-angular #agGrid
                     style="width:802px; /* height: 500px; */"
                     class = "ag-theme-balham"
-                    [rowData] = "rowData | async"
+                    [rowData] = "rowData"
                     [columnDefs] = "columnDefs"
                     rowSelection="multiple"
                     domLayout='autoHeight'
+                    enableCellChangeFlash="true"
     >
 
     </ag-grid-angular>

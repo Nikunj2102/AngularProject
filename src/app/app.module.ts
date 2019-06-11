@@ -5,11 +5,12 @@ import { AppComponent } from './app.component';
 
 //import AgGridModule
 import { AgGridModule } from 'ag-grid-angular';
+
 //import HttpClientModule to fetch data from a remote server
 import { HttpClientModule } from '@angular/common/http';
-import 'ag-grid-enterprise';
 import { FormComponent } from './form/form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 //import angular material for dialogue forms
 import { MatDialogModule } from '@angular/material';
 import {MatMenuModule} from '@angular/material/menu';
