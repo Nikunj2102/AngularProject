@@ -1,7 +1,7 @@
 import { Component, OnInit , Inject } from '@angular/core';
 import { MAT_DIALOG_DATA , MatDialogRef } from '@angular/material';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { STUDENT_DATA } from '../dummyData';
+
 
 @Component({
   selector: 'app-form',
@@ -39,10 +39,8 @@ ngOnInit() {
 }
   save()
   {
-    this.dialogRef.close(this.form.value);
-    // STUDENT_DATA.push({});
-    //{"id":1,"name":"Nikunj","address":"Sainik Vihar","mobileno":989898}
-    this.addData();
+    this.dialogRef.close(this.form.value);   
+    //this.addData();
   }
 
   close()
@@ -50,15 +48,15 @@ ngOnInit() {
     this.dialogRef.close();
   }
 
-  addData()
-  {
-    STUDENT_DATA.push({
+  // addData()
+  // {
+  //   STUDENT_DATA.push({
       
-        id:this.form.value.id,
-        name:this.form.value.name,
-        address:this.form.value.address,
-        mobileno:this.form.value.mobileno
+  //       id:this.form.value.id,
+  //       name:this.form.value.name,
+  //       address:this.form.value.address,
+  //       mobileno:this.form.value.mobileno
         
-    });
-  }
+  //   });
+  //}
 }
