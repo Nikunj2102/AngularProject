@@ -1,7 +1,7 @@
 <div style="max-width: 802px;">
     <ag-grid-angular #agGrid
                     style="width:802px; /* height: 500px; */"
-                    class = "ag-theme-balham"
+                    class = "ag-theme-balham col-xs-12"
                     [rowData] = "rowData"
                     [columnDefs] = "columnDefs"
                     rowSelection="multiple"
@@ -12,8 +12,8 @@
     </ag-grid-angular>
 
     <!--Add a button to send data to get selected rows-->
-    <button style="float: right; margin-top: 0.1%" class="btn btn-primary" (click) = "getSelectedRows()">Get Rows</button>
-    <button style="float : left; margin-top: 0.1%" class="btn btn-primary" (click) = "openDialog()">Register</button>
+    <button style="float: right; margin-top: 0.1%" class="btn btn-primary col-xs-6" (click) = "getSelectedRows()">Get Rows</button>
+    <button style="float : left; margin-top: 0.1%" class="btn btn-primary col-xs-6" (click) = "openDialog()">Register</button>
 </div>
 <!-- <router-outlet></router-outlet> -->
 <div style="clear: both"></div>

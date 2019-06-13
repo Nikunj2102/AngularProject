@@ -60,8 +60,9 @@ export class AppComponent implements OnInit{
     const dialogRef = this.dialog.open(FormComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(
      
-      (data) => {console.log("Dialog output:", data)
-
+      (data:student) => {
+        this.studentService.addStudent(data).subscribe();
+        
       });    
   }
 
