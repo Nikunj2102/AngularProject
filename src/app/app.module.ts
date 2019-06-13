@@ -31,11 +31,13 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent
+    FormComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

@@ -44,7 +44,6 @@ ngOnInit() {
   save()
   {
     this.dialogRef.close(this.form.value);   
-    this.addData(this.form.value);
   }
 
   close()
@@ -52,12 +51,4 @@ ngOnInit() {
     this.dialogRef.close();
   }
 
-  addData(newStudent: student): void
-  {
-    if(!newStudent)
-    {
-      return;
-    }
-    this.studentService.addStudent(newStudent);
-  }
 }
