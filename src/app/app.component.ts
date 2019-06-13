@@ -21,9 +21,8 @@ export class AppComponent implements OnInit{
   //VARIABLES DECLARATION
   title = "MyApp";
   rowData : student[];
-  private gridApi;
-  private gridColumnApi;
-
+  private newStudent:student;
+  idTrack: number;
 
   //KEEP TRACK OF THE AG-GRID
   @ViewChild('agGrid', {read:false, static: false}) agGrid;
@@ -46,7 +45,10 @@ export class AppComponent implements OnInit{
    //FUNCTIONS 
    assignValue()
     {
-      this.studentService.getStudents().subscribe(students => this.rowData = students);
+      this.studentService.getStudents().subscribe( (students) => {
+        this.rowData = students;
+        this.idTrack = students.length + 1;
+      });
   }
 
   
@@ -57,15 +59,19 @@ export class AppComponent implements OnInit{
     dialogConfig.autoFocus = true;
     
     dialogConfig.data = {
-      id: 1,
+      id: this.idTrack ,
       title: 'Angular For Beginners'
     }; 
     const dialogRef = this.dialog.open(FormComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(
      
       (data:student) => {
-        this.studentService.addStudent(data).subscribe();
-        this.studentService.getStudents().subscribe(students => this.rowData = students);
+        this.newStudent = data;
+        this.studentService.addStudent(this.newStudent).subscribe();
+        this.studentService.getStudents().subscribe((students) => {
+          this.rowData = students;
+          this.idTrack = students.length + 1;
+        });
       });    
   }
 

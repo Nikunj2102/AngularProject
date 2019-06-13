@@ -1,7 +1,9 @@
-export class student
+export interface student
 {
     id: number;
     name: string;
     address: string;
-    mobileno: number
+    mobileno: number;
+
 }
+
