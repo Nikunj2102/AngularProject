@@ -43,7 +43,7 @@ export class StudentService {
        return this.http.post<student>( this.url , data , httpOptions )
        .pipe(
        tap((newdata) => {
-         this.logMessage(`New student added : ${newdata.name}`)
+         this.logMessage(`New student added : ${newdata.name}`);
        }),
        catchError(this.handleError<student>('AddStudent'))
     );

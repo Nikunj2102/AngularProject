@@ -21,6 +21,9 @@ export class AppComponent implements OnInit{
   //VARIABLES DECLARATION
   title = "MyApp";
   rowData : student[];
+  private gridApi;
+  private gridColumnApi;
+
 
   //KEEP TRACK OF THE AG-GRID
   @ViewChild('agGrid', {read:false, static: false}) agGrid;
@@ -62,7 +65,7 @@ export class AppComponent implements OnInit{
      
       (data:student) => {
         this.studentService.addStudent(data).subscribe();
-        
+        this.studentService.getStudents().subscribe(students => this.rowData = students);
       });    
   }
 
@@ -74,10 +77,8 @@ export class AppComponent implements OnInit{
     alert(`Selected nodes: ${selectedDataStringPresentation}`);
   }
 
-      
   ngOnInit() 
   {
-    //this.rowData = this.http.get('https://api.myjson.com/bins/wvepl');
     this.assignValue();
   }
 
