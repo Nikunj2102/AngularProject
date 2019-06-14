@@ -33,13 +33,15 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { MessageComponent } from './message/message.component';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
+import { EditNameComponent } from './edit-name/edit-name.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
     MessageComponent,
-    ConfirmDeleteComponent
+    ConfirmDeleteComponent,
+    EditNameComponent
   ],
   imports: [
     BrowserModule,

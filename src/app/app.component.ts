@@ -108,10 +108,15 @@ export class AppComponent implements OnInit{
     });  
   }
 
-  // doSomething()
-  // {
-  //   alert(`Clicked the ag grid`);
-  // }
+  editRowData()
+  {
+    const dialogConfig = new MatDialogConfig();
+    
+
+    dialogConfig.autoFocus = true;
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe();
+  }
 
 
   ngOnInit() 
