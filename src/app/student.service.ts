@@ -26,7 +26,7 @@ export class StudentService {
       return of(result as T);
     };
   }
-  private logMessage(message: string)
+  logMessage(message: string)
   {
     this.messageService.addMessage(message);
   }

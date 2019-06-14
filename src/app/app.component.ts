@@ -86,6 +86,7 @@ export class AppComponent implements OnInit{
     const selectedData = selectedNodes.map( node => node.data );     
     selectedData.forEach ((data) => {
       this.url = `/api/STUDENT_DATA/${data.id}`;
+      this.studentService.logMessage(`Student Deleted: ${data.name}`);
       this.studentService.removeStudent(this.url).subscribe();
     });
     this.studentService.getStudents().subscribe(students => this.rowData = students);
