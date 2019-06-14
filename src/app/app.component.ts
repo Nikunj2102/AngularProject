@@ -6,6 +6,8 @@ import { MatDialog , MatDialogConfig } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { student } from './student';
 import { StudentService } from './student.service';
+import { not } from '@angular/compiler/src/output/output_ast';
+import { stringify } from '@angular/compiler/src/util';
 
 
 // url = '/api/STUDENT_DATA';
@@ -22,7 +24,8 @@ export class AppComponent implements OnInit{
   title = "MyApp";
   rowData : student[];
   private newStudent:student;
-  private url : string;
+  private url;
+  private urls : string[];
   private newstudents : student[];
   idTrack: number;
 
@@ -80,14 +83,12 @@ export class AppComponent implements OnInit{
       
   getSelectedRows() {
     const selectedNodes = this.agGrid.api.getSelectedNodes();
-    const selectedData = selectedNodes.map( node => node.data );
-    this.url = `/api/STUDENT_DATA/${selectedData[0].id}`
-    this.studentService.removeStudent(this.url).subscribe(() => {
-      this.studentService.getStudents().subscribe(students => this.rowData = students);
-      debugger;
+    const selectedData = selectedNodes.map( node => node.data );     
+    selectedData.forEach ((data) => {
+      this.url = `/api/STUDENT_DATA/${data.id}`;
+      this.studentService.removeStudent(this.url).subscribe();
     });
-    // const selectedDataStringPresentation = selectedData.map( node => node.name + ' ' + node.mobileno).join(', ');
-    // alert(`Selected nodes: ${selectedDataStringPresentation}`);
+    this.studentService.getStudents().subscribe(students => this.rowData = students);
   }
 
   ngOnInit() 
