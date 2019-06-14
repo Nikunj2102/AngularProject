@@ -1,10 +1,6 @@
 import { Component, OnInit , Inject } from '@angular/core';
 import { MAT_DIALOG_DATA , MatDialogRef } from '@angular/material';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { student } from '../student';
-import { StudentService } from '../student.service';
-import { InMemoryDataService } from '../in-memory-data.service';
-
 
 @Component({
   selector: 'app-form',
@@ -22,7 +18,6 @@ export class FormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private studentService: StudentService,
     private dialogRef: MatDialogRef<FormComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
 

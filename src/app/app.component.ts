@@ -1,13 +1,11 @@
 import { Component , OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Dialog } from 'ag-grid-community';
 import { FormComponent } from './form/form.component'
 import { MatDialog , MatDialogConfig } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { student } from './student';
 import { StudentService } from './student.service';
-import { not } from '@angular/compiler/src/output/output_ast';
-import { stringify } from '@angular/compiler/src/util';
+import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 
 
 // url = '/api/STUDENT_DATA';
@@ -91,6 +89,26 @@ export class AppComponent implements OnInit{
     });
     this.studentService.getStudents().subscribe(students => this.rowData = students);
   }
+
+  openConfirm()
+  {
+    const dialogConfig = new MatDialogConfig();
+    
+
+    dialogConfig.autoFocus = true;
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((data)=>{
+      if(data == true)
+      {
+        this.getSelectedRows();
+      }
+      if(data == false)
+      {
+        this.studentService.getStudents().subscribe(students => this.rowData = students);
+      }
+    });  
+  }
+
 
   ngOnInit() 
   {

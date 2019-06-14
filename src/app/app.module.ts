@@ -32,12 +32,14 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { MessageComponent } from './message/message.component';
+import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
-    MessageComponent
+    MessageComponent,
+    ConfirmDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +72,6 @@ import { MessageComponent } from './message/message.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [FormComponent]
+  entryComponents: [FormComponent , ConfirmDeleteComponent]
 })
 export class AppModule { }
