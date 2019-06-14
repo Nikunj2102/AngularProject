@@ -8,7 +8,7 @@ import { student } from './student';
 import { StudentService } from './student.service';
 
 
-
+// url = '/api/STUDENT_DATA';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,6 +22,8 @@ export class AppComponent implements OnInit{
   title = "MyApp";
   rowData : student[];
   private newStudent:student;
+  private url : string;
+  private newstudents : student[];
   idTrack: number;
 
   //KEEP TRACK OF THE AG-GRID
@@ -30,7 +32,7 @@ export class AppComponent implements OnInit{
   
   //DEFINING THE STRUCTURE OF THE GRID
   columnDefs = [
-    {headerName: "ID" , field:"id" , sortable: true , filter : true , checkboxSelection : true},
+    {headerName: "ID" , field:"id" , sortable: true , filter : true , checkboxSelection : true },
     {headerName: "Name" , field : "name" , sortable: true , filter : true},
     {headerName: "Address" , field: "address" , sortable: true , filter : true},
     {headerName: "Mobile No" , field : "mobileno" , sortable: true , filter : true}
@@ -79,8 +81,13 @@ export class AppComponent implements OnInit{
   getSelectedRows() {
     const selectedNodes = this.agGrid.api.getSelectedNodes();
     const selectedData = selectedNodes.map( node => node.data );
-    const selectedDataStringPresentation = selectedData.map( node => node.name + ' ' + node.mobileno).join(', ');
-    alert(`Selected nodes: ${selectedDataStringPresentation}`);
+    this.url = `/api/STUDENT_DATA/${selectedData[0].id}`
+    this.studentService.removeStudent(this.url).subscribe(() => {
+      this.studentService.getStudents().subscribe(students => this.rowData = students);
+      debugger;
+    });
+    // const selectedDataStringPresentation = selectedData.map( node => node.name + ' ' + node.mobileno).join(', ');
+    // alert(`Selected nodes: ${selectedDataStringPresentation}`);
   }
 
   ngOnInit() 
