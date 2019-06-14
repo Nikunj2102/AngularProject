@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { student } from './student';
 import { Observable , of, fromEventPattern} from 'rxjs';
 import { HttpClient , HttpHeaders } from '@angular/common/http';
-import { InMemoryDataService } from './in-memory-data.service';
 import { MessageService } from './message.service';
 import { tap , catchError , map} from 'rxjs/operators';
 
@@ -32,7 +31,7 @@ export class StudentService {
   }
   getStudents() : Observable<student[]>
   {
-    this.messageService.addMessage("List Fetched...");
+    this.messageService.addMessage("List Refreshed...");
     return this.http.get<student[]>(this.url).pipe(
       catchError(this.handleError<student[]>('getStudents' , []))
     );  

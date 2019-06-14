@@ -2,7 +2,6 @@ import { Component , OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormComponent } from './form/form.component'
 import { MatDialog , MatDialogConfig } from '@angular/material';
-import { FormsModule } from '@angular/forms';
 import { student } from './student';
 import { StudentService } from './student.service';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
@@ -33,10 +32,10 @@ export class AppComponent implements OnInit{
   
   //DEFINING THE STRUCTURE OF THE GRID
   columnDefs = [
-    {headerName: "ID" , field:"id" , sortable: true , filter : true , checkboxSelection : true },
-    {headerName: "Name" , field : "name" , sortable: true , filter : true},
-    {headerName: "Address" , field: "address" , sortable: true , filter : true},
-    {headerName: "Mobile No" , field : "mobileno" , sortable: true , filter : true}
+    {headerName: "ID" , field:"id" , sortable: false , filter : true , checkboxSelection : true },
+    {headerName: "Name" , field : "name" , sortable: false , filter : true},
+    {headerName: "Address" , field: "address" , sortable: false , filter : true},
+    {headerName: "Mobile No" , field : "mobileno" , sortable: false , filter : true}
   ];
 
   
@@ -108,6 +107,11 @@ export class AppComponent implements OnInit{
       }
     });  
   }
+
+  // doSomething()
+  // {
+  //   alert(`Clicked the ag grid`);
+  // }
 
 
   ngOnInit() 
