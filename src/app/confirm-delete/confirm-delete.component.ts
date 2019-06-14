@@ -18,14 +18,12 @@ export class ConfirmDeleteComponent implements OnInit {
   {
     this.confirmValue = false;
     this.dialogRef.close(this.confirmValue);
-    //debugger;
   }
 
   saveData()
   {
     this.confirmValue = true;
     this.dialogRef.close(this.confirmValue);
-    //debugger;
   }
 
   ngOnInit() {
