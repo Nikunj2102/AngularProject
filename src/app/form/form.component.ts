@@ -14,7 +14,7 @@ import { InMemoryDataService } from '../in-memory-data.service';
 export class FormComponent implements OnInit {
   
   form: FormGroup;
-  phoneno: number;
+  mobileno: number;
   address: string;
   name: string;
   id: number;
@@ -28,7 +28,7 @@ export class FormComponent implements OnInit {
 
     this.id = data.id;
     this.name = data.name;
-    this.phoneno = data.phoneno;
+    this.mobileno = data.mobileno;
     this.address = data.address;
 }
 
@@ -37,7 +37,7 @@ ngOnInit() {
       id: [this.id],
       name: [this.name],
       address: [this.address],
-      phoneno: [this.phoneno]
+      mobileno: [this.mobileno]
     
   });
 }
