@@ -80,7 +80,7 @@ export class AppComponent implements OnInit{
       
   getSelectedRows() {
     const selectedNodes = this.agGrid.api.getSelectedNodes();
-    const selectedData = selectedNodes.map( node => node.data );     
+    const selectedData = selectedNodes.map( node => node.data ); 
     selectedData.forEach ((data) => {
       this.url = `/api/STUDENT_DATA/${data.id}`;
       this.studentService.logMessage(`Student Deleted: ${data.name}`);
@@ -108,10 +108,11 @@ export class AppComponent implements OnInit{
     });  
   }
 
-  // doSomething()
-  // {
-  //   alert(`Clicked the ag grid`);
-  // }
+  getData(event)
+  {
+    const fetchedId = this.agGrid.api.getSelectedNodes()[0].data.id;
+    console.log(fetchedId);
+  }
 
 
   ngOnInit() 
