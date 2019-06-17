@@ -28,7 +28,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
 import { MatToolbarModule } from "@angular/material/toolbar";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { MessageComponent } from './message/message.component';
@@ -74,6 +74,6 @@ import { EditNameComponent } from './edit-name/edit-name.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [FormComponent , ConfirmDeleteComponent]
+  entryComponents: [FormComponent , ConfirmDeleteComponent , EditNameComponent]
 })
 export class AppModule { }

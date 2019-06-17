@@ -4,6 +4,7 @@ import { Observable , of, fromEventPattern} from 'rxjs';
 import { HttpClient , HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { tap , catchError , map} from 'rxjs/operators';
+import { EditNameComponent } from "./edit-name/edit-name.component";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -53,6 +54,15 @@ export class StudentService {
   removeStudent(newurl): Observable<student>
   {
     return this.http.delete<student>(newurl , httpOptions);
+  }
+
+  updateStudent(id , student: student): Observable<any>
+  {
+    const url = `/api/STUDENT_DATA/${id}`; 
+    return this.http.put(url , student , httpOptions).pipe(
+      tap(_ => this.logMessage(`Updated Student : ${student.name}`)),
+      catchError(this.handleError<any>('updateStudent'))
+    );
   }
 
 }

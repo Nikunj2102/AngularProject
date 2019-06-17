@@ -5,6 +5,7 @@ import { MatDialog , MatDialogConfig } from '@angular/material';
 import { student } from './student';
 import { StudentService } from './student.service';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
+import { EditNameComponent } from './edit-name/edit-name.component';
 
 
 // url = '/api/STUDENT_DATA';
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit{
   private urls : string[];
   private newstudents : student[];
   idTrack: number;
+  idToUpdate: number;
 
   //KEEP TRACK OF THE AG-GRID
   @ViewChild('agGrid', {read:false, static: false}) agGrid;
@@ -61,8 +63,7 @@ export class AppComponent implements OnInit{
     dialogConfig.autoFocus = true;
     
     dialogConfig.data = {
-      id: this.idTrack ,
-      title: 'Angular For Beginners'
+      id: this.idTrack
     }; 
     const dialogRef = this.dialog.open(FormComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(
@@ -92,8 +93,6 @@ export class AppComponent implements OnInit{
   openConfirm()
   {
     const dialogConfig = new MatDialogConfig();
-    
-
     dialogConfig.autoFocus = true;
     const dialogRef = this.dialog.open(ConfirmDeleteComponent, dialogConfig);
     dialogRef.afterClosed().subscribe((data)=>{
@@ -108,11 +107,30 @@ export class AppComponent implements OnInit{
     });  
   }
 
-  getData(event)
+  getData()
   {
-    const fetchedId = this.agGrid.api.getSelectedNodes()[0].data.id;
-    console.log(fetchedId);
+    const fetchedData = this.agGrid.api.getSelectedNodes()[0].data;
+    this.idToUpdate = fetchedData.id
+    return fetchedData; 
+  }
 
+  
+
+  editStudentPopUp()
+  {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      id: this.getData().id,
+      name: this.getData().name,
+      address: this.getData().address,
+      mobileno: this.getData().mobileno
+    }
+    const dialogRef = this.dialog.open(EditNameComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((data) => {
+      this.studentService.updateStudent(this.idToUpdate , data).subscribe();
+      this.studentService.getStudents().subscribe(data => this.rowData = data);
+    });
   }
 
 

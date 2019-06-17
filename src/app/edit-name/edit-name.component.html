@@ -2,3 +2,39 @@
   Edit...
 </h2>
 
+<mat-dialog-content [formGroup]="form">
+
+  <mat-form-field>
+    <input matInput placeholder="ID?" formControlName="id" readonly>
+    <br>
+  </mat-form-field>
+  
+  <mat-form-field>
+    <input matInput placeholder="Name?" formControlName="name" >
+    <br>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Address" formControlName="address" >
+    <br>
+  </mat-form-field>
+
+  <mat-form-field> 
+    <input matInput placeholder="Phone Number?" formControlName="mobileno" >
+    <br>
+  </mat-form-field> 
+
+</mat-dialog-content>
+
+
+<mat-dialog-actions>
+  
+  <button class="mat-raised-button" (click)="close()">
+    CANCEL
+  </button>
+
+  <button class="mat-raised-button mat-primary" (click)="save()">
+    SAVE DETAILS
+  </button> 
+
+</mat-dialog-actions>
