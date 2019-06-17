@@ -34,6 +34,8 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { MessageComponent } from './message/message.component';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 import { EditNameComponent } from './edit-name/edit-name.component';
+import { EditContentsComponent } from './edit-contents/edit-contents.component';
+import { MainComponentComponent } from './main-component/main-component.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { EditNameComponent } from './edit-name/edit-name.component';
     FormComponent,
     MessageComponent,
     ConfirmDeleteComponent,
-    EditNameComponent
+    EditNameComponent,
+    EditContentsComponent,
+    MainComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +77,7 @@ import { EditNameComponent } from './edit-name/edit-name.component';
 
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [MainComponentComponent],
   entryComponents: [FormComponent , ConfirmDeleteComponent , EditNameComponent]
 })
 export class AppModule { }

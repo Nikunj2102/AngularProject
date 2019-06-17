@@ -1,20 +1,24 @@
-<div style="max-width: 802px;" class="ag-grid-main">
-    <ag-grid-angular #agGrid
-                    style="width:802px; /* height: 500px; */"
-                    class = "ag-theme-balham col-xs-12"
-                    [rowData] = "rowData"
-                    [columnDefs] = "columnDefs"
-                    rowSelection="multiple"
-                    domLayout='autoHeight'
-                    (dblclick)="editStudentPopUp()"
-    >
+<div>
+    <div style="max-width: 802px;" class="ag-grid-main">
+        <ag-grid-angular #agGrid
+                        style="width:802px; /* height: 500px; */"
+                        class = "ag-theme-balham col-xs-12"
+                        [rowData] = "rowData"
+                        [columnDefs] = "columnDefs"
+                        rowSelection="multiple"
+                        domLayout='autoHeight'
+                        (dblclick)="editStudentPopUp()"
+        >
 
-    </ag-grid-angular>
+        </ag-grid-angular>
 
-    <!--Add a button to send data to get selected rows-->
-    <button style="float: right; margin-top: 0.1%" class="btn btn-primary col-xs-6" (click) = "openConfirm()">Delete Selected Rows</button>
-    <button style="float : left; margin-top: 0.1%" class="btn btn-primary col-xs-6" (click) = "openDialog()">Register</button>
+        <p>**Double Click to edit**</p>
+
+        <!--Add a button to send data to get selected rows-->
+        <button style="float: right; margin-top: 0.1%" class="btn btn-primary col-xs-6" (click) = "openConfirm()">Delete Selected Rows</button>
+        <button style="float : left; margin-top: 0.1%" class="btn btn-primary col-xs-6" (click) = "openDialog()">Register</button>
+    </div>
+
+    <div style="clear: both"></div>
+    <app-message style="margin-top: 2%"></app-message>
 </div>
-<!-- <router-outlet></router-outlet> -->
-<div style="clear: both"></div>
-<app-message style="margin-top: 2%"></app-message>

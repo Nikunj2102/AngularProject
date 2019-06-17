@@ -34,8 +34,10 @@ export class AppComponent implements OnInit{
   
   //DEFINING THE STRUCTURE OF THE GRID
   columnDefs = [
-    {headerName: "ID" , field:"id" , sortable: false , filter : true , checkboxSelection : true },
-    {headerName: "Name" , field : "name" , sortable: false , filter : true},
+    {headerName: "ID" , field:"id" , sortable: false , filter : true , checkboxSelection : true},
+    {headerName: "Name" , field : "name" , sortable: false , filter : true , cellRenderer: function(params){
+      return `<a href="/${params.value}">${params.value}</a>`
+    }},
     {headerName: "Address" , field: "address" , sortable: false , filter : true},
     {headerName: "Mobile No" , field : "mobileno" , sortable: false , filter : true}
   ];
