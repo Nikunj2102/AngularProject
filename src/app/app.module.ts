@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 //import AgGridModule
@@ -36,6 +37,7 @@ import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.componen
 import { EditNameComponent } from './edit-name/edit-name.component';
 import { EditContentsComponent } from './edit-contents/edit-contents.component';
 import { MainComponentComponent } from './main-component/main-component.component';
+import { CellRendererComponent } from './cell-renderer/cell-renderer.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { MainComponentComponent } from './main-component/main-component.componen
     ConfirmDeleteComponent,
     EditNameComponent,
     EditContentsComponent,
-    MainComponentComponent
+    MainComponentComponent,
+    CellRendererComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { MainComponentComponent } from './main-component/main-component.componen
     AgGridModule.withComponents([]),
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
@@ -78,6 +82,6 @@ import { MainComponentComponent } from './main-component/main-component.componen
   ],
   providers: [],
   bootstrap: [MainComponentComponent],
-  entryComponents: [FormComponent , ConfirmDeleteComponent , EditNameComponent]
+  entryComponents: [FormComponent , ConfirmDeleteComponent , EditNameComponent , CellRendererComponent]
 })
 export class AppModule { }

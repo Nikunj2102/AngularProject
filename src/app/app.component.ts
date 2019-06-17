@@ -6,6 +6,8 @@ import { student } from './student';
 import { StudentService } from './student.service';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 import { EditNameComponent } from './edit-name/edit-name.component';
+import { TransmitService } from './transmit.service';
+import { CellRendererComponent } from './cell-renderer/cell-renderer.component';
 
 
 // url = '/api/STUDENT_DATA';
@@ -35,9 +37,7 @@ export class AppComponent implements OnInit{
   //DEFINING THE STRUCTURE OF THE GRID
   columnDefs = [
     {headerName: "ID" , field:"id" , sortable: false , filter : true , checkboxSelection : true},
-    {headerName: "Name" , field : "name" , sortable: false , filter : true , cellRenderer: function(params){
-      return `<a href="/${params.value}">${params.value}</a>`
-    }},
+    {headerName: "Name" , field : "name" , sortable: false , filter : true , cellRendererFramework: CellRendererComponent}, 
     {headerName: "Address" , field: "address" , sortable: false , filter : true},
     {headerName: "Mobile No" , field : "mobileno" , sortable: false , filter : true}
   ];
@@ -45,7 +45,7 @@ export class AppComponent implements OnInit{
   
 
   //DEFINING LOCAL INSTANCES
-  constructor(private http: HttpClient , private dialog: MatDialog , private studentService: StudentService) { }
+  constructor(private transmitService:TransmitService, private http: HttpClient , private dialog: MatDialog , private studentService: StudentService) { }
 
 
    //FUNCTIONS 
@@ -57,6 +57,10 @@ export class AppComponent implements OnInit{
       });
   }
 
+  doSomething()
+  {
+    alert("working")
+  }
   
   openDialog() {
     const dialogConfig = new MatDialogConfig();
