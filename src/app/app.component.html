@@ -1,4 +1,4 @@
-<div style="max-width: 802px;">
+<div style="max-width: 802px;" class="ag-grid-main">
     <ag-grid-angular #agGrid
                     style="width:802px; /* height: 500px; */"
                     class = "ag-theme-balham col-xs-12"
@@ -6,7 +6,7 @@
                     [columnDefs] = "columnDefs"
                     rowSelection="multiple"
                     domLayout='autoHeight'
-                    (rowDoubleClicked)="editRowData()"
+                    (dblclick)="getData($event)"
     >
 
     </ag-grid-angular>
