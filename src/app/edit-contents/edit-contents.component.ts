@@ -18,16 +18,23 @@ export class EditContentsComponent implements OnInit {
   constructor(private location: Location , private transmitService: TransmitService) { }
 
   assignValues()
-  {
+  { 
     this.id = this.transmitService.data[0].id;
     this.name = this.transmitService.data[0].name;
     this.address = this.transmitService.data[0].address;
     this.mobileno = this.transmitService.data[0].mobileno;
+
+    //generalise this for multiple requests
   }
 
   goBack()
   {
     this.location.back();
+  }
+
+  extractData()
+  {
+    alert("clicked");
   }
 
   ngOnInit() {
