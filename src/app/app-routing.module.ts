@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {path:":name" , component: EditContentsComponent},
-  {path:"", component: AppComponent}
+  {path:"", component: AppComponent},
+
 ];
 
 @NgModule({

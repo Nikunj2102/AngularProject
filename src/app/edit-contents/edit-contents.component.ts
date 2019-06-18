@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TransmitService } from '../transmit.service';
 import { Location } from '@angular/common'; 
+import { FormGroup , FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-contents',
@@ -14,8 +15,9 @@ export class EditContentsComponent implements OnInit {
   name:string;
   address:string;
   mobileno: number;
+  form: FormGroup;
 
-  constructor(private location: Location , private transmitService: TransmitService) { }
+  constructor(private fb:FormBuilder , private location: Location , private transmitService: TransmitService) { }
 
   assignValues()
   { 
@@ -34,11 +36,17 @@ export class EditContentsComponent implements OnInit {
 
   extractData()
   {
-    alert("clicked");
+    console.log(this.form.value);
   }
 
   ngOnInit() {
     this.assignValues();
+    this.form = this.fb.group({
+      id: [this.id],
+      name: [this.name],
+      address: [this.address],
+      mobileno: [this.mobileno]
+    });
   }
 
 }

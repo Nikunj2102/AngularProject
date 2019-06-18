@@ -3,31 +3,33 @@
 </h2>
 
 <div style="max-width: 500px">
-  <form>
-    <div style="display:flex; flex-direction: column; max-width: 500px;">
-      <div style="margin-top: 2%;" >
-        <label for="id" style="float: left;">New Id: </label>
-        <input name="id" style="float:right;" type="text" [value]="id" readonly />
-      </div>
 
-      <div style="margin-top: 2%">
-        <label for="name" style="float: left;">New Name:</label>
-        <input type="text" style="float:right;" name="name" [(ngModel)]="name" />
-      </div>
+  <div [formGroup]="form">
+    <mat-form-field>
+      <label for="id">New Id: </label>
+      <input matInput [value]="id" id="id" formControlName="id" readonly>
+    </mat-form-field>
+    <hr>
 
-      <div style="margin-top: 2%">
-        <label for="address" style="float: left;">New Address: </label>
-        <input type="text" style="float:right ;" name="address" [(ngModel)]="address" />
-      </div>
+    <mat-form-field>
+      <label for="name">New Name: </label>
+      <input matInput id="name" type="text" [value]="name" formControlName="name" />
+    </mat-form-field>
+    <hr>
 
-      <div style="margin-top: 2%">
-        <label for="mobileno" style="float: left;">New Number: </label>
-        <input type="text" style="float:right;" name="mobileno" [(ngModel)]="mobileno" />
-      </div>
+    <mat-form-field>
+      <label for="address">New Address: </label>
+      <input id="address" matInput [value]="address" formControlName="address" />
+    </mat-form-field>
+    <hr>
 
-    </div>
-  </form>
+    <mat-form-field>
+      <label for="mobileno">New Number: </label>
+      <input id="mobileno" matInput [value]="mobileno" formControlName="mobileno" />
+    </mat-form-field>
+  </div>
+
   <hr>
-  <button (click)="goBack()" style="margin-top:2%; float: left;" class="btn btn-primary">Go Back</button>
   <button (click)="extractData()" style="margin-top:2% ;float: right;" class="btn btn-primary">Submit</button>
+  <button (click)="goBack()" style="margin-top:2%; float: left;" class="btn btn-primary">Go Back</button>
 </div>
