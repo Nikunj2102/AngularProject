@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TransmitService } from '../transmit.service';
 import { Location } from '@angular/common'; 
 import { FormGroup , FormBuilder } from '@angular/forms';
+import { StudentService } from '../student.service';
 
 @Component({
   selector: 'app-edit-contents',
@@ -17,7 +18,7 @@ export class EditContentsComponent implements OnInit {
   mobileno: number;
   form: FormGroup;
 
-  constructor(private fb:FormBuilder , private location: Location , private transmitService: TransmitService) { }
+  constructor(private studentService: StudentService , private fb:FormBuilder , private location: Location , private transmitService: TransmitService) { }
 
   assignValues()
   { 
@@ -25,6 +26,7 @@ export class EditContentsComponent implements OnInit {
     this.name = this.transmitService.data[0].name;
     this.address = this.transmitService.data[0].address;
     this.mobileno = this.transmitService.data[0].mobileno;
+    this.transmitService.data = [];
 
     //generalise this for multiple requests
   }
@@ -37,6 +39,12 @@ export class EditContentsComponent implements OnInit {
   extractData()
   {
     console.log(this.form.value);
+    this.studentService.updateStudent(this.form.value.id , this.form.value).subscribe((data) => {
+    this.studentService.getStudents().subscribe((students) => {
+      this.transmitService.students = students;
+      this.goBack();
+    })
+    });
   }
 
   ngOnInit() {

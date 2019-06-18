@@ -52,14 +52,10 @@ export class AppComponent implements OnInit{
    assignValue()
     {
       this.studentService.getStudents().subscribe( (students) => {
-        this.rowData = students;
+        this.transmitService.students = students;
+        this.rowData = this.transmitService.students;
         this.idTrack = students.length + 1;
       });
-  }
-
-  doSomething()
-  {
-    alert("working")
   }
   
   openDialog() {
@@ -78,7 +74,8 @@ export class AppComponent implements OnInit{
         this.newStudent = data;
         this.studentService.addStudent(this.newStudent).subscribe();
         this.studentService.getStudents().subscribe((students) => {
-          this.rowData = students;
+          this.transmitService.students = students;
+          this.rowData = this.transmitService.students;
           this.idTrack = students.length + 1;
         });
       });    
@@ -93,7 +90,10 @@ export class AppComponent implements OnInit{
       this.studentService.logMessage(`Student Deleted: ${data.name}`);
       this.studentService.removeStudent(this.url).subscribe();
     });
-    this.studentService.getStudents().subscribe(students => this.rowData = students);
+    this.studentService.getStudents().subscribe(students => {
+      this.transmitService.students = students;
+      this.rowData = this.transmitService.students;
+    });
   }
 
   openConfirm()
@@ -108,7 +108,10 @@ export class AppComponent implements OnInit{
       }
       if(data == false)
       {
-        this.studentService.getStudents().subscribe(students => this.rowData = students);
+        this.studentService.getStudents().subscribe(students => {
+          this.transmitService.students = students;
+          this.rowData = this.transmitService.students;
+        });
       }
     });  
   }
@@ -135,7 +138,10 @@ export class AppComponent implements OnInit{
     const dialogRef = this.dialog.open(EditNameComponent, dialogConfig);
     dialogRef.afterClosed().subscribe((data) => {
       this.studentService.updateStudent(this.idToUpdate , data).subscribe();
-      this.studentService.getStudents().subscribe(data => this.rowData = data);
+      this.studentService.getStudents().subscribe(students => {
+        this.transmitService.students = students;
+        this.rowData = this.transmitService.students;
+      });
     });
   }
 
@@ -148,4 +154,11 @@ export class AppComponent implements OnInit{
 }
     
     //   https://api.myjson.com/bins/wvepl <- link to JSON data
+    /* 
+      get value of students into service students
+      inject service students as row data
+      after put request get new list of students
+      set new students to service students
+      inject new service students into row data
     
+    */
